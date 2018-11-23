@@ -45,8 +45,34 @@
                 android:id="@+id/btn_cita"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="sacarCita"
+                android:text="CONSULTAR" />
 
-                android:text="Sacar cita" />
+            <TextView
+                android:id="@+id/infoCita"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/messageCita"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/nombreEstudiante"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/contactoEstudiante"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/correoEstudiante"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
 
             <Button
                 android:id="@+id/logout"

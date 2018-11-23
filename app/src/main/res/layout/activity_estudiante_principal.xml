@@ -29,6 +29,30 @@
                 android:layout_centerHorizontal="true"
                 android:onClick="logout"
                 android:text="@string/logout" />
+            <TextView
+                android:id="@+id/locationTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/nameTextView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="27dp"
+                android:text="Seleccione para ver los pacientes que puede tratar:"
+                android:textSize="14sp" />
+
+            <Spinner
+                android:id="@+id/spinnerEnfermedades"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:addStatesFromChildren="false"
+                android:entries="@array/enfermedades"/>
+
+            <Button
+                android:id="@+id/btn_cita"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="consultarCita"
+                android:text="CONSULTAR" />
+
         </LinearLayout>
     </ScrollView>
 

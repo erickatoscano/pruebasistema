@@ -6,6 +6,9 @@ class Persons {
     private String pass;
     private String name;
     private Integer rol_id;
+    private  String disponibilidad;
+    private  String disponible;
+    private  String enfermedad_a_tratar;
 
     public Persons() {
     }
@@ -15,6 +18,39 @@ class Persons {
         this.pass = pass;
         this.name = name;
         this.rol_id = rol_id;
+    }
+    public Persons(String name, String mail, String pass,  String disponibilidad, String disponible, String enfermedad_a_tratar) {
+        this.mail = mail;
+        this.pass = pass;
+        this.name = name;
+        this.disponibilidad = disponibilidad;
+        this.disponible = disponible;
+        this.enfermedad_a_tratar = enfermedad_a_tratar;
+
+    }
+
+    public String getDisponibilidad() {
+        return disponibilidad;
+    }
+
+    public void setDisponibilidad(String disponibilidad) {
+        this.disponibilidad = disponibilidad;
+    }
+
+    public String getDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(String disponible) {
+        this.disponible = disponible;
+    }
+
+    public String getEnfermedad_a_tratar() {
+        return enfermedad_a_tratar;
+    }
+
+    public void setEnfermedad_a_tratar(String enfermedad_a_tratar) {
+        this.enfermedad_a_tratar = enfermedad_a_tratar;
     }
 
     public String getMail() {

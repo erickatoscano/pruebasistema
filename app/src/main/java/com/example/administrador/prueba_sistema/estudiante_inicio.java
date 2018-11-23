@@ -21,13 +21,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
-
 
 public class estudiante_inicio extends AppCompatActivity implements View.OnClickListener {
 
@@ -37,7 +32,8 @@ public class estudiante_inicio extends AppCompatActivity implements View.OnClick
     Button signup, login;
     EditText nameTextView, emailTextView, passTextView, emailI, claveI;
     Persons persona;
-    String idEstudiante;
+    Estudiante student;
+    String idEstudiante, idLogueado;
     Boolean flag=true;
     private DatabaseReference databaseReference;
     //Declaramos un objeto firebaseAuth
@@ -112,8 +108,13 @@ public class estudiante_inicio extends AppCompatActivity implements View.OnClick
         idEstudiante=databaseReference.push().getKey();
 
 
+
+        Toast.makeText(estudiante_inicio.this,"ID: "+idLogueado,Toast.LENGTH_LONG).show();
         //CREO EL OBJETO Y PREGUNTO SI SE REPITE POR EMAIL
         persona = new Persons (nombre,email,clave,rol_id);
+
+
+
         //Query personaQ = databaseReference.child("persons").orderByChild("mail").equalTo(email);
 
 
@@ -126,28 +127,23 @@ public class estudiante_inicio extends AppCompatActivity implements View.OnClick
                             Log.d(TAG, "createUserWithEmail:success");
                            // FirebaseUser user = mAuth.getCurrentUser();
                            // updateUI(user);
-                            Toast.makeText(estudiante_inicio.this,"Se ha registrado el usuario con el email: "+
+                            Toast.makeText(estudiante_inicio.this,
+                                    "Se ha registrado el usuario con el email: "+
                                     emailTextView.getText(),Toast.LENGTH_LONG).show();
 
 
 
+                            student = new Estudiante(mAuth.getUid(), 1, 1);
                             //AGREGO EN LA BD DE FIREBASE MI OBJETO PERSONA
-                            databaseReference.child("persons").child(idEstudiante).setValue(persona);
-                            // databaseReference.child("students").child(idEstudiante).setValue(persona);
+                            databaseReference.child("persons").child(mAuth.getUid()).setValue(persona);
+                            databaseReference.child("students").child(idEstudiante).setValue(student);
 
 
 
-                            //IR A PANTALLA PRINCIPAL
-/*
-                            Intent intent = new Intent(getApplicationContext(), estudiante_principal.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                            startActivity(intent);*/
 
                             int pos = email.indexOf("@");
                             String user = email.substring(0, pos);
 
-                            Toast.makeText(estudiante_inicio.this, "Bienvenido: " + emailTextView.getText(),
-                                    Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(getApplication(), estudiante_principal.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                             intent.putExtra(estudiante_principal.user, user);//enviar el parametro
