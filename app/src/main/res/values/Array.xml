@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="universidades">
+        <item>ESTATAL</item>
+        <item>Católica</item>
+    </string-array>
+
+    <string-array name="enfermedades">
+        <item>Caries</item>
+        <item>Periodontitis</item>
+        <item>Gingivitis</item>
+        <item>Profilaxis</item>
+        <item>Halitosis</item>
+        <item>Afta</item>
+    </string-array>
+</resources>

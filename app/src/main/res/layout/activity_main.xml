@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.administrador.prueba_sistema.MainActivity">
-
+////<!--*
     <TextView
         android:id="@+id/nameTextView"
         android:layout_width="wrap_content"
@@ -46,6 +46,7 @@
         android:textSize="14sp" />
 
     <Button
+        android:id="@+id/logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -99,4 +100,5 @@
         android:layout_marginStart="0dp"
         android:layout_marginBottom="92dp"
         android:text="TextView" />
+    */!-->
 </RelativeLayout>

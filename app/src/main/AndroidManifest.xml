@@ -41,8 +41,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".registro" />
-        <activity android:name=".App"></activity>
+        <activity android:name=".App" />
+        <activity android:name=".estudiante_inicio" />
+        <activity android:name=".estudiante_principal" />
+        <activity android:name=".HomePaciente"></activity>
     </application>
 
 </manifest>

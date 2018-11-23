@@ -12,7 +12,6 @@ import android.location.LocationManager;
 import android.location.LocationProvider;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Person;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,28 +30,37 @@ import android.widget.Toast;
 import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.List;
 import java.util.Locale;
 
 
-public class MainActivity extends AppCompatActivity implements SensorEventListener {
+public class MainActivity extends AppCompatActivity //implements SensorEventListener
+ {
 
-
-    EditText mail, nombre, apellido, clave, rol_id;
+/*    EditText mail, nombre, apellido, clave, rol_id;
     Button guardar;
 
     private DatabaseReference databaseReference;
 
 
 
+
     private TextView nameTextView;
     private TextView emailTextView;
     private TextView uidTextView;
-
+    private Persons persona;
+    String idU;
+    Boolean flag=true;
+Integer cont;
     TextView mensaje1, mensaje2;
 
 
@@ -62,13 +70,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     TextView x, y, z;
     Sensor sensor;
-    SensorManager sm;
+    SensorManager sm;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+/*
         mensaje1 = (TextView) findViewById(R.id.tv1);
         mensaje2 = (TextView) findViewById(R.id.tv2);
 
@@ -80,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         } else {
             locationStart();
         }
+
 
 
 
@@ -114,17 +123,62 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             emailTextView.setText(mail);
             uidTextView.setText(uid);
 
-            Persons persona = new Persons (name,mail,pass,rol_id);
-            databaseReference.child("persons").child("3").setValue(persona);
-            Toast.makeText(getApplicationContext(),
-                    "Usuario registrado",
-                    Toast.LENGTH_SHORT).show();
+            idU=databaseReference.push().getKey();
+
+            persona = new Persons (name,mail,pass,rol_id);
+
+
+            //for que pase por los ids (child)
+            //for que pase por el mail y pregunte
+
+            Query q = databaseReference.child("persons").orderByChild("mail").equalTo(mail);
+
+            q.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    cont=0;
+                    for(DataSnapshot datasnapshot: dataSnapshot.getChildren()){
+                        cont++;
+                        flag=false;
+
+                        //Toast.makeText(MainActivity.this, "He encontrado "+cont, Toast.LENGTH_LONG).show();
+
+                            Toast.makeText(getApplicationContext(),
+                                    "Usuario ya registrado",
+                                    Toast.LENGTH_SHORT).show();
+                    }
+
+
+                    Toast.makeText(getApplicationContext(), flag.toString(), Toast.LENGTH_SHORT).show();
+
+
+                    //AGREGAR A LA BASE DE DATOS EN FIREBASE
+                    if(flag==true){
+                        databaseReference.child("persons").child(idU).setValue(persona);
+                        Toast.makeText(getApplicationContext(),
+                                "Usuario registrado",
+                                Toast.LENGTH_SHORT).show();
+
+                    }
+
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+            System.out.println("------------------------"+cont);
+
 
 
         } else {
             goLoginScreen();
         }
-    }
+        */
+    }/*
     @Override
     public void onSensorChanged(SensorEvent event) {
         x.setText(String.valueOf(event.values[0]));
@@ -197,7 +251,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             }
         }
     }
-    /* Aqui empieza la Clase Localizacion */
+    // Aqui empieza la Clase Localizacion
     public class Localizacion implements LocationListener {
         MainActivity mainActivity;
 
@@ -253,5 +307,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
 
 }
+*/
 
 }
