@@ -29,9 +29,9 @@ public class estudiante_principal extends AppCompatActivity implements AdapterVi
     public static final String user="names";
     TextView txtuser;
     Spinner enfermedadesSpinner;
-    ArrayList<String> listaEnfermedades=new ArrayList<>();
+   // ArrayList<String> listaEnfermedades=new ArrayList<>();
 
-    ArrayAdapter<String> comboAdapter;
+    //ArrayAdapter<String> comboAdapter;
     String idEnfermedad,
             nombreEnfermedad, enfermedadGuardada,
     idLogueado;

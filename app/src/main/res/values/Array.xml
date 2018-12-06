@@ -2,8 +2,11 @@
 <resources>
 
     <string-array name="universidades">
-        <item>ESTATAL</item>
+        <item>ESPOL</item>
+        <item>Estatal</item>
         <item>Católica</item>
+        <item>Salesiana</item>
+        <item>Casa Grande</item>
     </string-array>
 
     <string-array name="enfermedades">
@@ -14,4 +17,5 @@
         <item>Halitosis</item>
         <item>Afta</item>
     </string-array>
+
 </resources>
